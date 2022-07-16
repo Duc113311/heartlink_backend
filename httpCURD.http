@@ -1,0 +1,88 @@
+### - Users
+
+GET http://localhost:4000/users/v1/User
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTc4NzgyNjQsImV4cCI6MTY1Nzg3ODI5NH0.LqVIhOqzPCcvI7Im86lEOf3l12HQbHNIMrNzr42DLZo
+###
+
+GET http://localhost:4000/users/v1/RefreshTokens/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiJzaXkzampHRm1PaDQwS2c5SDdaTTRMNEdvQmoyIiwiUGhvbmVOdW1iZXIiOiIrODQ5NjIyODI4NjQiLCJpYXQiOjE2NTc3Njk5NjJ9.bteGsYxDUYKEnyXAWmjtUUQsXA4tw7TZFxB4cvBW2eI
+###
+
+
+
+POST http://localhost:4000/users/v1/Users
+Content-Type: application/json
+
+{
+    "UserID":"1oMkqtPswFZMXDUq0JCEkhvJEA93",
+    "FullName":"Nguyễn Văn Nam",
+    "BirthDay": "2013-10-21T13:28:06.419Z",
+    "ImageAvatar":[
+        {
+            "id":"hEckvpTesXMyYUSzyDzj",
+            "url":"https://firebasestorage.googleapis.com/v0/b/app-heartlink.appspot.com/o/some-child%2F%E1%BA%A2nh-si%C3%AAu-xe-Lamborghini.jpg?alt=media&token=7eeaa0fd-fd5f-40e0-a967-54f0879030d6"
+        },
+        {
+            "id":"jloDnFgTNrAIc7ZJaphp",
+            "url":"https://firebasestorage.googleapis.com/v0/b/app-heartlink.appspot.com/o/some-child%2Fphoto-1-158206208103944329957_uxuj.jpg?alt=media&token=adeee090-7e7f-4573-a724-319df1850b4b"
+        }
+    ],
+    "IntroduceYourself":"Tôi 23 tuổi, nghề nghiệp IT, thích nấu ăn",
+    "Interests":"Bóng chuyền, Ban Nhạc, Khởi Nghiệp",
+    "SchoolName":"Trường trung học phổ thông Hưng Yên",
+    "SexualOrientation":"Straight, Gay, Queer",
+    "CreateBy":"2013-10-21T13:28:06.419Z",
+    "Gender":0
+}
+
+### -------------------------------------------------------------------------###
+### - Đăng ký tài khoản bằng nhập email và passwork
+POST http://localhost:4000/login/v1/register
+Content-Type: application/json
+
+{
+    "userName":"nguyenvanducdev@gmail.com",
+    "passWord":"1234567"
+}
+
+### - Login bằng tài khoản Email/passwork
+POST http://localhost:4000/login/v1/login
+Content-Type: application/json
+
+{
+    "userName":"nguyenvanducdev@gmail.com",
+    "passWord":"1234567"
+}
+
+### - Login bằng số điện thoại
+POST http://localhost:4000/login/v1/phone-number
+Content-Type: application/json
+
+{
+    "phoneNumber":"+84962282864",
+    "codeId":"406725",
+    "sendCodeId":"AOO2nWVfsGW7PgYLjMfFuFLjczeNnbSgDui_Ys2OoTzHq5WJWGVILYqYj5NJsdup5qStfCT9iO-hvR06YXyEk-gJvWF2An2UIu1HjupLj2ozNVVIEoGaGhFOX4Oy221GRt5XhZijqy2XNUMTDTDFMx0-sTAoIjRGYjRH0FoBkv4sGIlPF8sNIMeO3mHJnpk9vpSwVB7gKda2MxSOAX7q0xFlByt0BNL43vJ4l2h51SPg5M3A-1kG8Gw"
+}
+
+
+### - Tạo refreshToken khi AccessToken hết hạn - gia hạn thêm
+POST http://localhost:4000/login/v1/create-refresh-token
+Content-Type: application/json
+
+{
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiJuanVPa0kzbW5aVVI3aFAzcWVWQnhFamRkcFIyIiwiUGhvbmVOdW1iZXIiOiIrODQ5NjIyODI4NjQiLCJpYXQiOjE2NTc4Nzc5ODh9.feCU3dBn5J0H6vMWczyGgZRdyFEaLKBPjmZny9rHAIc"
+}
+
+
+###-----------------------------------------------------------------------###
+### - StyleOptions
+
+GET http://localhost:4000/style-option/v1/getAll
+
+###
+###
+POST http://localhost:4000/style-option/v1/create
+Content-Type: application/json
+
+{
+    "Title":"Aquarium"
+}
