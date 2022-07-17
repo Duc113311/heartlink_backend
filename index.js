@@ -12,7 +12,7 @@ const loginRouters = require("./src/routes/rt-login");
 const styleRouters = require("./src/routes/rt-style");
 
 const app = express();
-const PORT = process.env.PORT || 4000; // port để sử dụng
+const PORT = process.env.PORT; // port để sử dụng
 // const isProduction = process.env.NODE_ENV === "production";
 
 app.use(helmet());
