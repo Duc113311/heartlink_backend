@@ -12,9 +12,14 @@ const loginRouters = require("./src/routes/rt-login");
 const styleRouters = require("./src/routes/rt-style");
 
 const app = express();
-const PORT = process.env.PORT; // port để sử dụng
+const PORT = process.env.PORT || 4000; // port để sử dụng
 // const isProduction = process.env.NODE_ENV === "production";
-
+const importData = [
+  {
+    id: 1,
+    name: "Duc",
+  },
+];
 app.use(helmet());
 
 app.use(morgan("tiny"));
@@ -27,7 +32,9 @@ app.use(bodyParser.json());
 app.use("/users/v1", usersRouters);
 app.use("/login/v1", loginRouters);
 app.use("/style-option/v1", styleRouters);
-
+app.get("/player", (req, res) => {
+  res.send(importData);
+});
 // Router Default
 app.get("/", (req, res) => res.send("Hello from Homepage"));
 
