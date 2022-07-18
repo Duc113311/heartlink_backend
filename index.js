@@ -32,11 +32,17 @@ app.use(bodyParser.json());
 app.use("/users/v1", usersRouters);
 app.use("/login/v1", loginRouters);
 app.use("/style-option/v1", styleRouters);
+
 app.get("/player", (req, res) => {
   res.send(importData);
 });
+
+if (process.env.NODE_ENV === "production") {
+  app.get("*", (req, res) => {
+    res.send("Hello from Homepage");
+  });
+}
 // Router Default
-app.get("/", (req, res) => res.send("Hello from Homepage"));
 
 // Đang Listen trên port nào.
 app.listen(PORT, () =>
