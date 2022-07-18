@@ -29,13 +29,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Router của Controller App
-app.use("/users/v1", usersRouters);
-app.use("/login/v1", loginRouters);
-app.use("/style-option/v1", styleRouters);
-
-app.get("/player", (req, res) => {
-  res.send(importData);
-});
 
 if (process.env.NODE_ENV === "production") {
   app.get("*", (req, res) => {
@@ -43,7 +36,13 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 // Router Default
+app.use("/users/v1", usersRouters);
+app.use("/login/v1", loginRouters);
+app.use("/style-option/v1", styleRouters);
 
+app.get("/player", (req, res) => {
+  res.send(importData);
+});
 // Đang Listen trên port nào.
 app.listen(PORT, () =>
   console.log(`Server runing mon port: http://localhost:${PORT}`)
